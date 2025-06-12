@@ -1,3 +1,10 @@
+configurations.all {
+    resolutionStrategy {
+        // Fuerza JavaPoet 1.13.0 en todas las configuraciones
+        force("com.squareup:javapoet:1.13.0")
+    }
+}
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -75,8 +82,11 @@ dependencies {
     // …
 
     implementation("com.google.dagger:hilt-android:2.47")
-    kapt("com.google.dagger:hilt-compiler:2.47")
+    kapt("com.google.dagger:hilt-compiler:2.47"){
+        exclude(group = "com.squareup", module = "javapoet")
+    }
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("com.squareup:javapoet:1.13.0")
 }
 kapt {
     correctErrorTypes = true
