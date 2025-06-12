@@ -1,7 +1,6 @@
 package com.ucb.coffespot
 
 import android.os.Bundle
-import android.window.SplashScreen
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -26,6 +25,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CoffeSpotTheme {
+                //Surface(color = MaterialTheme.colorScheme.background) {
                 val navController = rememberNavController()
                 NavHost(navController, startDestination = "splash") {
                     composable("splash") {
@@ -49,29 +49,7 @@ class MainActivity : ComponentActivity() {
                     //    HomeScreen()
                     //}
                 }
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CoffeSpotTheme {
-        Greeting("Android")
     }
 }
